@@ -1,4 +1,4 @@
-# Draft specification for GraphQL Schema Decorators
+# Idea + draft specification for GraphQL Schema Decorators
 
 Decorators can be used to augment GraphQL schemas. They are similar to directives
 which modify the way a GraphQL server executes a query, but they apply only to schemas.
