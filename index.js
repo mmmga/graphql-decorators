@@ -19,9 +19,8 @@ class Log {
   function apply({ prefix }) {
     return function( wrappedThing ){ 
       const resolver = wrappedThing.resolve;
-      wrappedThing.resolve = (o, a, c, i){
-        // TODO: document requirements for logger
-        this.logger.log(prefix, i.fieldName, c.userId, c.remoteIP);
+      wrappedThing.resolve = (o, a, c, info){
+        this.logger.log(prefix, info.fieldName, new Date());
         return resolver(o, a, c, i);
       }
     }
