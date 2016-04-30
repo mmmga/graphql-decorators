@@ -1,0 +1,24 @@
+{
+  "name": "graphql-decorators",
+  "version": "0.0.1",
+  "description": "A standard set of decorators for GraphQL schemas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apollostack/graphql-decorators.git"
+  },
+  "keywords": [
+    "GraphQL",
+    "Node.js",
+    "JavaScript"
+  ],
+  "author": "Jonas Helfer <jonas@helfer.email>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/apollostack/graphql-decorators/issues"
+  },
+  "homepage": "https://github.com/apollostack/graphql-decorators#readme"
+}
