@@ -85,11 +85,11 @@ All decorators must extend the SchemaDecorator class and implement the following
 
 ```es6
 class SampleFieldDecorator extends SchemaDecorator {
-  const tag = 'sample'; // matches +sample in GraphQL schema language
+  const defaultTag = 'sample'; // matches +sample in GraphQL schema language
   const locations = ['field', 'type', 'interface', 'union']; // where this decorator can be applied
 
-  // the argSignature can be used to check whether a decorator's arguments are valid.
-  const argSignature = {
+  // the arguments declaration can be used to check whether a decorator's arguments are valid.
+  const arguments = {
     type: GraphQLString,
     min: GraphQLInt,
     max: GraphQLInt
@@ -98,21 +98,21 @@ class SampleFieldDecorator extends SchemaDecorator {
   // the constructor is used to configure things once per server, such as database credentials.
   // if the same decorator class is to be used with different configurations, then two instances
   // with different prefixes have to be created.
-  constructor(config, prefix = ''){
+  constructor(config){
     this.config = config;
-    this.prefix = prefix;
+    this.tag = config.tag || defaultTag;
   }
 
-  getTag(){
-    return this.prefix + tag;
+  get tag(){
+    return this.tag;
   }
 
   isWellPlaced(locationName){
     return locations.indexOf(locationName) >= 0;
   }
 
-  getArgSignature(){
-    return argSignature;
+  get arguments(){
+    return arguments;
   }
 
   // apply returns a function which gets applied to the decorated thing.
