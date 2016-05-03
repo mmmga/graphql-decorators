@@ -21,3 +21,16 @@ export class SchemaDecorator {
     return isValidLiteralValue(inputType, argsAST);
   }
 }
+
+
+export const DecoratorLocation = {
+  SCHEMA: 'SCHEMA',
+  TYPE: 'TYPE',
+  INPUT: 'INPUT',
+  ENUM: 'ENUM',
+  UNION: 'UNION',
+  SCALAR: 'SCALAR',
+  INTERFACE: 'INTERFACE',
+  FIELD: 'FIELD',
+  ARG: 'ARG',
+};

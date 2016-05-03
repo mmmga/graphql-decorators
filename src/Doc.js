@@ -4,11 +4,20 @@ import {
   GraphQLInputObjectType,
 } from 'graphql';
 
-import { SchemaDecorator } from './SchemaDecorator';
+import { SchemaDecorator, DecoratorLocation } from './SchemaDecorator';
 
 export class Doc {
   static defaultTag = 'doc';
-  static locations = ['type', 'interface', 'union', 'scalar', 'field', 'arg'];
+  static locations = [
+    DecoratorLocation.TYPE,
+    DecoratorLocation.UNION,
+    DecoratorLocation.INTERFACE,
+    DecoratorLocation.SCALAR,
+    DecoratorLocation.FIELD,
+    DecoratorLocation.ARG,
+    DecoratorLocation.INPUT,
+    DecoratorLocation.ENUM,
+  ];
   static inputType = new GraphQLInputObjectType({
     name: 'docDecoratorInputType',
     fields: {
