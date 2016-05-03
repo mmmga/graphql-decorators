@@ -1,4 +1,4 @@
-import { Doc } from '../src/Doc';
+import { Doc, createClass } from '../src/Doc';
 import { expect } from 'chai';
 
 describe('Doc decorator', () => {

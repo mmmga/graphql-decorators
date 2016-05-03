@@ -4,11 +4,11 @@ import {
   GraphQLInputObjectType,
 } from 'graphql';
 
-import { SchemaDecorator, DecoratorLocation } from './SchemaDecorator';
+import { createDecorator, DecoratorLocation } from './SchemaDecorator';
 
-export class Doc {
-  static defaultTag = 'doc';
-  static locations = [
+export const Doc = createDecorator({
+  name: 'doc',
+  locations: [
     DecoratorLocation.TYPE,
     DecoratorLocation.UNION,
     DecoratorLocation.INTERFACE,
@@ -17,27 +17,21 @@ export class Doc {
     DecoratorLocation.ARG,
     DecoratorLocation.INPUT,
     DecoratorLocation.ENUM,
-  ];
-  static inputType = new GraphQLInputObjectType({
+  ],
+  inputType: new GraphQLInputObjectType({
     name: 'docDecoratorInputType',
     fields: {
       description: { type: new GraphQLNonNull(GraphQLString) },
     },
-  });
+  }),
 
   constructor(config){
-    const { tag } = config || {};
-    this.tag = tag || Doc.defaultTag;
-  }
+    // nothing to do...
+  },
 
   apply(args){
-    const errors = SchemaDecorator.checkArgs(Doc.inputType, args);
-    if (errors.length > 0){
-      throw new Error(`Errors parsing decorator: ${errors[0]}`);
-    }
-
     return (decoratedThing) => {
       decoratedThing.description = args.description;
     }
-  }
-}
+  },
+});
