@@ -1,6 +1,6 @@
 # Idea + draft specification for GraphQL Schema Decorators
 
-test!123456
+test!1234567
 
 
 Decorators can be used to augment GraphQL schemas. They are similar to directives
